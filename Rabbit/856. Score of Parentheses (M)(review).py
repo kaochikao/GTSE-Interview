@@ -17,11 +17,10 @@ Even we only use O(1) in each function, but the recursion takes stack memory of 
 
 """
 algo理解：
-- iteration & recursion 並用
-    - 因為會有多個同層的(), 也會有子層的()
+- iteration & recursion 並用; 因為會有多個同層的(), 也會有子層的()
 
 實現技巧：
-- [TODO]
+- [TODO] 快慢pointers?
 """
 def scoreOfParentheses_rec(S):
     depth = 0
