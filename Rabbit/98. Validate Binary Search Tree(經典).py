@@ -110,6 +110,19 @@ def isValidBST(self, root):
 
 # ------------------------------------------------------------------------------------------------------------
 
+# 用recursive做in-order traversal
+# Bridge: 還沒100%確定對，基本邏輯應該是對的，反正就是先一路左
+def inorder_rec(self, root):
+    if not root.left and not root.right:
+        return
+    if root.left:
+        self.inorder_rec(root.left)
+    if root.right:
+        self.inorder_rec(root.right)
+
+
+# ------------------------------------------------------------------------------------------------------------
+
 class TreeNode(object):
     def __init__(self, val=0, left=None, right=None):
         self.val = val
