@@ -21,3 +21,27 @@ class Solution:
         else:
             return 0
 
+
+
+class Solution:
+    def minSubArrayLen(self, s, nums) -> int:
+
+        if sum(nums) < s:
+            return 0
+
+        ans = float('inf')
+        l = 0
+        r = 0
+        while l < len(nums) and r < len(nums):
+            total = sum(nums[l:r + 1])
+            if total < s:
+                r += 1
+            else:
+                ans = min(ans, (r - l + 1))
+
+                if ans == 1:
+                    return ans
+
+                l += 1
+
+        return ans

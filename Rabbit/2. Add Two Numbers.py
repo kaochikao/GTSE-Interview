@@ -6,9 +6,6 @@ Bridge: 目前實作失敗
 """
 
 
-
-
-
 # Definition for singly-linked list.
 class ListNode(object):
     def __init__(self, val=0, next=None):
@@ -54,3 +51,27 @@ class Solution(object):
         root = L1
         rec(L1, L2, 0)
         return root
+
+
+
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        carry = 0
+        # dummy head
+        head = curr = ListNode(0)
+
+        while l1 or l2:
+            val = carry
+            if l1:
+                val += l1.val
+                l1 = l1.next
+            if l2:
+                val += l2.val
+                l2 = l2.next
+            curr.next = ListNode(val % 10)
+            curr = curr.next
+            carry = val / 10
+        if carry > 0:
+            curr.next = ListNode(carry)
+            
+        return head.next

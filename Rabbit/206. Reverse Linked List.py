@@ -1,3 +1,29 @@
+
+
+"""
+自解，recursive.
+要改成iterative很簡單，用while loop用next去走就可以
+"""
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        
+        if not head:
+            return head
+
+        return self.rec(head, None)
+        
+    def rec(self, head, prev):
+        
+        next_n = head.next
+        head.next = prev
+        
+        if not next_n:
+            return head
+        
+        return self.rec(next_n, head)
+
+
+
 """
 iteration解法
 - time: linear

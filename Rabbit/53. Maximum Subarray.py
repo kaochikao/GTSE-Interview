@@ -25,7 +25,7 @@ class Solution(object):
             # key: 我要不要帶著prefix, 還是我自己當頭
             A[i] = max(nums[i], A[i - 1] + nums[i])
 
-        return max(A)
+        return max(A) # key, 不是return A[-1]
 
 
 """
@@ -74,3 +74,19 @@ class Solution(object):
 
 # pattern: first & last item of the sub-array is never going to be negative
 # edge case: all negative items -> sum = 0 = 0 length sub-array
+
+
+
+
+class Solution(object):
+    def maxSubArray(self, nums):
+        if len(nums) == 0:
+            return 0
+
+        A = [0] * len(nums)
+        A[0] = nums[0]
+
+        for i in range(1, len(nums)):
+            A[i] = max(nums[i], A[i - 1] + nums[i])
+
+        return max(A)

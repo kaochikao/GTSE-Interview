@@ -1,5 +1,42 @@
 
 
+# 二刷自解
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        self.d = {'2': 'abc',
+                '3': 'def',
+                '4': 'ghi',
+                '5': 'jkl',
+                '6': 'mno',
+                '7': 'pqrs',
+                '8': 'tuv',
+                '9': 'wxyz',
+                '0': ' '}
+        
+        self.digits = digits
+        
+        if len(digits) == 0:
+            return []
+        
+        tmp = [x for x in self.d[digits[0]]]
+        return self.rec(tmp, 1)
+        
+        
+    def rec(self, a, p):
+        
+        
+        if p == len(self.digits):
+            return a
+        
+        new_a = []
+        
+        for i in a:
+            for j in self.d[self.digits[p]]:
+                
+                new_a.append(i + j)
+                
+        return self.rec(new_a, p + 1)
+
 """
 自解 recursion, BFS
 其實我做的好像也是DFS?!

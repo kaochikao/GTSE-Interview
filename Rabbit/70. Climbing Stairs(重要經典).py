@@ -1,19 +1,37 @@
 
-# climb n stairs, how many ways?
-def climbStairs(self, n: int) -> int:
-        memo = {}
-        memo[0] = 1
+# 自解，iteration
+class Solution:
+    def climbStairs(self, n: int) -> int:
         
-        def helper(n):
-            if n in memo:
-                return memo[n]
-            if n < 0:
-                return 0
+        if n == 0 or n == 1:
+            return n
+        
+        dmap = [0] * (n + 1)
+        dmap[1] = 1
+        dmap[2] = 2
+        
+        for i in range(3, n + 1):
+            dmap[i] = dmap[i - 1] + dmap[i - 2]
+            
+        return dmap[n]
 
-            memo[n] = helper(n-1) + helper(n-2)
-            return memo[n]
-        
-        return helper(n)
+# 第一次DP題解那麼順，iter & rec都直接寫出來
+class Solution:
+    def climbStairs(self, n: int) -> int:
+
+        def helper(n, dmap):
+            
+            if n in dmap:
+                return dmap[n]
+            
+            dmap[n] = helper(n-1, dmap) + helper(n-2, dmap)
+            return dmap[n]
+            
+
+        dmap = {}
+        dmap[1] = 1
+        dmap[2] = 2
+        return helper(n, dmap)
 
 # 排列組合法
 class Solution(object):

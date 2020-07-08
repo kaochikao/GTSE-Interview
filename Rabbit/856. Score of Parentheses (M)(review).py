@@ -75,6 +75,7 @@ def scoreOfParentheses(S):
             depth += 1
         else:
             depth -= 1
+            # 這裡沒錯，因為最外圈的，其實是不拿分的
             if S[i - 1] == '(':
                 score += 2 ** depth
 

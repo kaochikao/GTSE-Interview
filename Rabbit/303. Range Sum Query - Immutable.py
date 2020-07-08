@@ -8,7 +8,7 @@ class NumArray(object):
             - 這裡是先宣告一個"array", 用於lookup
         """
         self.res = [0] * (len(nums) + 1)
-        self.data = list(nums)
+        self.data = nums
         for i in range(len(self.data)):
             self.res[i + 1] = self.res[i] + nums[i]
 

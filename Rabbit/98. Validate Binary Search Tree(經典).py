@@ -1,9 +1,17 @@
 
-
 # BST 不是只是在小樹中 parent > left, parent < right. 還要看整個tree, 大的都要在右邊，小的都在左邊．
+"""
+
+Pre-Order: Node -> L -> R
+In-Order: L -> Node -> R
+Post-Order: L -> R -> Node
+
+永遠都是從左到右，只是看Node的相對位置在哪
 
 """
 
+
+"""
 Bridge: 
 - 解了幾次，看過答案後終於解成功，直得review, 多想幾次．
 
@@ -16,7 +24,7 @@ Algo理解：
 - again, edge case 沒考慮到，tree的edge case就是root是None
 
 """
-# 
+# 這個解法應該算是DFS
 
 class Solution(object):
     def isValidBST(self, root):
@@ -85,6 +93,7 @@ def isValidBST(self, root):
         root = root.right
         # if right is None, 則while loop從root切到stack, 也就是左線 
     return True
+
 
 
 

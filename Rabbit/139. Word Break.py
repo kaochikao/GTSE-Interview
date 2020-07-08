@@ -1,9 +1,12 @@
 class Solution(object):
     def wordBreak(self, s, wordDict):
 
+        # queue 是用來存s上的某些index
         queue = [0]
         ls = len(s)
         lenList = [l for l in set(map(len, wordDict))]
+
+        # zeros
         visited = [0 for _ in range(0, ls + 1)]
         while queue:
             start = queue.pop(0)
@@ -15,3 +18,4 @@ class Solution(object):
                         queue.append(start + l)
                         visited[start + l] = 1
         return False
+

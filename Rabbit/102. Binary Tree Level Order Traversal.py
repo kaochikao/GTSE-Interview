@@ -1,4 +1,36 @@
+"""
+二刷，自解，iterative, 其實就是之前看的答案(下面那個)
+"""
 
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        
+        A = []
+        
+        if not root:
+            return A
+        
+        q = [root]
+                
+        while q:
+            
+            tmp_q = []
+            
+            a = []
+            while q:
+                root = q.pop(0)
+                a.append(root.val)
+                
+                if root.left:
+                    tmp_q.append(root.left)
+                
+                if root.right:
+                    tmp_q.append(root.right)
+                    
+            A.append(a)
+            q = tmp_q
+        
+        return A
 
 """
 Algo:

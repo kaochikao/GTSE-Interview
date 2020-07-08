@@ -33,3 +33,34 @@ class Solution(object): # first, self-attempt
 
 
 # Solution: https://github.com/qiyuangong/leetcode/blob/master/python/099_Recover_Binary_Search_Tree.py
+
+# 自解，正確
+class Solution:
+    def recoverTree(self, root: TreeNode) -> None:
+        ans = root
+        
+        stack = []
+        
+        prev = TreeNode(val=float('-inf'))
+        swap1 = None
+        swap2 = None
+        
+        while stack or root:
+            
+            while root:
+                stack.append(root)
+                root = root.left
+                
+            root = stack.pop()
+            
+            if root.val < prev.val:
+                if not swap1:                
+                    swap1 = prev
+                swap2 = root
+                
+            prev = root
+            root = root.right
+        
+        swap1.val, swap2.val = swap2.val, swap1.val
+        
+        return ans

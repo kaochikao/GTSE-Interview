@@ -25,3 +25,29 @@ class Solution(object):
                 curr = curr.next.next
 
         return head_p
+
+
+"""
+Ans:
+
+- 這裡dummy head不是為了建另一個linked list, 只是加個prev, 這裡還是in-place在swap.
+"""
+class Solution(object):
+    def swapPairs(self, head):
+        dummyHead = ListNode(-1)
+        dummyHead.next = head
+        prev, p = dummyHead, head
+
+        while p and p.next:
+            q, r = p.next, p.next.next
+
+
+            # swap 2 nodes 其實有3個 "links"需要改
+            prev.next = q
+            q.next = p
+            p.next = r
+
+            prev = p
+            p = r
+
+        return dummyHead.next
