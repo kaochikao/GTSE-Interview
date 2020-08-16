@@ -1,5 +1,28 @@
 
 
+# 2刷自解
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        self.A = []
+        self.rec("", n, n)
+        return self.A
+        
+    def rec(self, path, l, r):
+        
+        if l == 0 and r == 0:
+            self.A.append(path)
+            return 
+            
+        if l > r:
+            return 
+        
+        if l == 0:
+            self.A.append(path + ")" * r)
+            return 
+        
+        self.rec(path + "(", l - 1, r)
+        self.rec(path + ")", l, r - 1)
+
 """
 limit: #) >= #(
 remaining

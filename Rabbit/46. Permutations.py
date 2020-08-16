@@ -1,4 +1,22 @@
+# 二刷自解
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        
+        self.nums = nums
+        self.A = []
+        
+        self.rec([], nums)
+        return self.A
+        
+    def rec(self, path, options):
+        
+        if len(path) == len(self.nums):
+            self.A.append(path)
+            return
+        
+        for i in range(len(options)):
 
+            self.rec(path + [options[i]], options[:i] + options[i+1:])
 
 
 """

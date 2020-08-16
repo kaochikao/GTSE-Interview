@@ -1,3 +1,32 @@
+
+
+# 小改了empty pop的方式，更易讀
+def solve(self, board, empty):
+    
+    if not empty:
+        return True
+    
+    curr = empty.pop()
+
+    row = curr // 9
+    col = curr % 9
+
+    for i in range(1, 10):
+        
+        if self.is_safe(board, row, col, str(i)):
+
+            board[row][col] = str(i)
+            tail = self.solve(board, empty)
+        
+            if tail:
+                return True
+            else:
+
+                board[row][col] = '.'
+    
+    empty.append(curr)
+    return False
+
 """
 algo:
 - 先找到要fill的cell -> empty stack

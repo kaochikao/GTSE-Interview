@@ -59,6 +59,7 @@ class Solution:
 
     def rec(self, node, d):
 
+        # 只有自己會把自己的clone加到hash map. 這很重要，因為hash map是當TODO list for traversal, 所以只在curr時加入
         curr = Node(val=node.val)
         d[node.val] = curr
 
@@ -68,6 +69,7 @@ class Solution:
 
                 d[node.val].neighbors.append(d[ne.val])
             else:
+                # hey neighbor, 還沒看到你, 先去把你自己加進hash map裡
                 tmp = self.rec(ne, d)
                 d[node.val].neighbors.append(tmp)
 

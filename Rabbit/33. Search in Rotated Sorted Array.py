@@ -1,3 +1,7 @@
+
+"""
+nums = [4,5,6,7,0,1,2], target = 0
+"""
 class Solution:
     def search(self, nums, target):
         return self.get(nums, target, 0, len(nums) - 1)
